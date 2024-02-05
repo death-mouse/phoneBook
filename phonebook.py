@@ -34,9 +34,11 @@ def copy_contact(num_line: int, filename_from: str, filename_to: str):
     with open(filename_from, 'r', encoding='utf-8') as content, open(filename_to, "r+t", encoding='utf-8') as writer:
         text = content.readlines()
         if(num_line <= len(text)):
+            numLineInCopy = f"{num_line};"
             copy_line = text[num_line - 1]
-            writer.readlines()
-            writer.write(f"\n{copy_line}")
+            copy_line = copy_line[len(numLineInCopy):]
+            lineCount = len(writer.readlines())
+            writer.write(f"{lineCount + 1};{copy_line}")
 
 INFO_STRING = """
 Выберите режим работы:
